@@ -21,7 +21,20 @@ export const getWinner = (cellBlocks: Array<string | null>): string | null => {
       return cellBlocks[firstCell];
     }
   }
+  if (!cellBlocks.includes(null)) return 'draw';
   return null;
+};
+
+export const setResultText = (value: string): string => {
+  switch (value) {
+    case 'X':
+      return 'You win a robot';
+    case 'O':
+      return 'The robot beats you! AHAHAHA';
+
+    default:
+      return 'It is a draw!';
+  }
 };
 
 export const userSymbol = 'X';

@@ -4,11 +4,18 @@ import UsePlayField from './helpers/hooks';
 import { Board } from './components';
 import { TButton } from 'components';
 import { boxWrapper } from './style';
-import { Dialog, DialogActions, DialogTitle } from '@mui/material';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Typography,
+} from '@mui/material';
+import { setResultText } from './helpers/helper';
 
 const PlayGround: FC = () => {
   const { cellBlocks, handleClick, handleReset, userIsNext, winner } =
     UsePlayField();
+
   return (
     <Box sx={boxWrapper}>
       <Board
@@ -17,12 +24,18 @@ const PlayGround: FC = () => {
         shouldDisable={!userIsNext}
       />
 
-      <Dialog open={winner !== null}>
-        <DialogTitle>{`The winner is: ${winner}`}</DialogTitle>
-        <DialogActions>
-          <TButton handleClick={handleReset} />
-        </DialogActions>
-      </Dialog>
+      {winner && (
+        <Dialog open={winner !== null}>
+          <DialogContent>
+            <Typography align='center' color='primary' variant='h4'>
+              {setResultText(winner)}
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <TButton handleClick={handleReset} />
+          </DialogActions>
+        </Dialog>
+      )}
     </Box>
   );
 };

@@ -5,5 +5,6 @@ export const cellBlockWrabber = (shouldDisable: boolean) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    position: 'relative',
   };
 };

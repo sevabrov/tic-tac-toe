@@ -1,5 +1,6 @@
+import PlayGround from './pages/PlayGround';
 function App() {
-  return <div>Tic Tac Toe</div>;
+  return <PlayGround />;
 }
 
 export default App;
